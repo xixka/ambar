@@ -15,6 +15,29 @@ Ambar defines a new way to implement a full-text document search into yor workfl
 - Tag your documents
 - Use a simple REST Api to integrate Ambar into your workflow
 
+## Install
+
+Increase Docker's available memory
+![Docker Desktop](https://raw.githubusercontent.com/land007/ambar/master/image/087F8C40-A159-4E7B-B0CC-F658C769DEBF.png)
+
+Run the following command
+```bash
+#first step（Download compose yml）
+wget https://raw.githubusercontent.com/land007/ambar/master/docker-compose.yml
+
+#second step（Replace your ip address）
+vi docker-compose.yml
+#:117
+#- api=http://192.168.1.218:8080 -> http://${Replace your ip address}:8080 
+
+#third step（Clear docker environment variables）
+unset ${!DOCKER_*}
+
+#the fourth step Run
+docker-compose up -d
+```
+
+
 ## Features
 
 ### Search
