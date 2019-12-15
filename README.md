@@ -37,8 +37,19 @@ unset ${!DOCKER_*}
 
 #the fourth step Run
 docker-compose up -d
+#Recreating ambar_serviceapi_1 ... done
+#Recreating ambar_pipeline0_1  ... done
+#Recreating ambar_webapi_1     ... done
+#Recreating ambar_crawler2_1   ... done
+#Recreating ambar_frontend_1   ... done
 ```
 
+Open your address
+
+
+```
+http://${your ip address}:3000
+```
 
 ## Features
 
