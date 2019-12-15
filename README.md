@@ -30,7 +30,7 @@ wget https://raw.githubusercontent.com/land007/ambar/master/docker-compose.yml
 #second step（Replace your ip address）
 vi docker-compose.yml
 #:117
-#- api=http://192.168.1.218:8080 -> http://${Replace your ip address}:8080 
+#- api=http://127.0.0.1:8080 -> http://${Replace your ip address}:8080 
 
 #third step（Clear docker environment variables）
 unset ${!DOCKER_*}
