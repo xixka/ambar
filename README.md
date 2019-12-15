@@ -18,9 +18,11 @@ Ambar defines a new way to implement a full-text document search into yor workfl
 ## Install
 
 Increase Docker's available memory
+
 ![Docker Desktop](https://raw.githubusercontent.com/land007/ambar/master/image/087F8C40-A159-4E7B-B0CC-F658C769DEBF.png)
 
 Run the following command
+
 ```bash
 #first step（Download compose yml）
 wget https://raw.githubusercontent.com/land007/ambar/master/docker-compose.yml
