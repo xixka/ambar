@@ -89,8 +89,8 @@ services:
     image: land007/ambar-webapi:latest
     expose:
       - "8080"
-    ports:
-      - "8080:8080"
+#    ports:
+#      - "8080:8080"
     environment:            
       - uiLang=cn
       - mongoDbUrl=mongodb://db:27017/ambar_data
@@ -109,8 +109,8 @@ services:
     restart: always
     networks:
       - internal_network
-    ports:
-      - "3000:80"
+ #   ports:
+ #     - "3000:80"
     expose:
       - "80"
     environment:
@@ -141,7 +141,31 @@ services:
       - name=crawler2
     volumes:
       -  ~/docker/ambar/test:/usr/data
-
+  node-http-proxy:
+    depends_on: 
+      frontend: 
+        condition: service_healthy 
+      webapi: 
+        condition: service_healthy 
+    image: land007/node-http-proxy:latest
+    restart: always
+    networks:
+      - internal_network
+    expose:
+      - "80"
+      - "20022"
+    ports:
+      - "20080:80"
+      - "20022:20022"
+    environment:
+      - http_proxy_paths=/api/ /
+      - http_proxy_hosts=webapi frontend
+      - http_proxy_ports=8080 80
+      - ws_proxy_paths=/api/
+      - ws_proxy_hosts=webapi
+      - ws_proxy_ports=8080
+    volumes:
+      -  ~/docker/node-http-proxy:/node
 
   
   
