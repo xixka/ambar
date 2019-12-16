@@ -27,29 +27,28 @@ Run the following command
 #first step（Download compose yml）
 wget https://raw.githubusercontent.com/land007/ambar/master/docker-compose.yml
 
-#second step（Replace your ip address）
-vi docker-compose.yml
-#:117
-#- api=http://127.0.0.1:8080 -> http://${Replace your ip address}:8080 
-
 #third step（Clear docker environment variables）
 unset ${!DOCKER_*}
 
 #the fourth step Run
 docker-compose up -d
-#Recreating ambar_serviceapi_1 ... done
-#Recreating ambar_pipeline0_1  ... done
-#Recreating ambar_webapi_1     ... done
-#Recreating ambar_crawler2_1   ... done
-#Recreating ambar_frontend_1   ... done
+#Creating ambar_serviceapi_1 ... done
+#Creating ambar_pipeline0_1  ... done
+#Creating ambar_webapi_1     ... done
+#Creating ambar_crawler2_1   ... done
+#Creating ambar_frontend_1   ... done
+#Creating ambar_node-http-proxy_1   ... done
 ```
 
 Open your address
 
 
 ```
-http://${your ip address}:3000
+http://${your ip address}:28080
 ```
+
+Enter user name land007 password 1234567
+
 
 ## Features
 
