@@ -44,7 +44,7 @@ Open your address
 
 
 ```
-http://${your ip address}:28080
+http://${your ip address}:20080
 ```
 
 Enter user name land007 password 1234567
