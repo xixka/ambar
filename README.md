@@ -21,7 +21,13 @@ Increase Docker's available memory
 
 ![Docker Desktop](https://raw.githubusercontent.com/land007/ambar/master/image/087F8C40-A159-4E7B-B0CC-F658C769DEBF.png)
 
-Run the following command
+Run the following docker command
+
+```bash
+docker run -it --privileged --name RD17_ambar -v ~/docker/RD17_ambar:/root/docker -p 20080:20080 -p 20022:20022 "land007/RD17_ambar:latest"
+```
+
+Or run the following docker-compose command
 
 ```bash
 #first step（Download compose yml）
