@@ -24,7 +24,7 @@ Increase Docker's available memory
 Run the following docker command
 
 ```bash
-docker run -it --privileged --name RD17_ambar -v ~/docker/RD17_ambar:/root/docker -p 20080:20080 -p 20022:20022 "land007/RD17_ambar:latest"
+docker run -it --privileged --name rd17-ambar -v ~/docker/rd17-ambar:/root/docker -p 20080:20080 -p 20022:20022 land007/rd17-ambar:latest
 ```
 
 Or run the following docker-compose command
