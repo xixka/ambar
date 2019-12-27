@@ -15,7 +15,7 @@ VOLUME /root/docker
 EXPOSE 20022/tcp
 EXPOSE 20080/tcp
 
-CMD service docker start && cd /app && docker-compose up -d
+CMD service docker start && cd /app && docker-compose up -d && bash
 
 #> docker rm -f docker-compose ; docker run -it --rm --privileged --name docker-compose land007/docker-compose:latest
 #> docker commit -a "Jia Yiqiu <yiqiujia@hotmail.com>" -m "ambar all in one" a404c6c174a2  land007/rd17-ambar:latest
