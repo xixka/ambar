@@ -9,6 +9,7 @@ RUN apt-get update \
 		curl \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y iptables && apt-get clean
 # Set a timezone
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -68,7 +69,10 @@ VOLUME /data/db /data/configdb
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-CMD ["/entrypoint.sh"]
+ENV LANIP=172.18.0.1
+ADD iptables.sh	/
+#CMD ["/entrypoint.sh"]
+CMD /iptables.sh ; /entrypoint.sh
 
 HEALTHCHECK --interval=5s --timeout=30s --retries=50 \
   CMD curl -f localhost:27017 || exit 1

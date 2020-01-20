@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     default-jdk \
     readpst
     
+RUN apt-get update && apt-get install -y iptables && apt-get clean
 # Set timezone
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -37,7 +38,10 @@ RUN mkdir /pst-temp
 
 ENV JAVA_HOME /usr/lib/jvm/default-java
 
-CMD python ./pipeline.py
+ENV LANIP=172.18.0.1
+ADD iptables.sh	/
+#CMD python ./pipeline.py
+CMD /iptables.sh ; python ./pipeline.py
 
 HEALTHCHECK --interval=5s --timeout=30s --retries=50 \
   CMD if (pidof -x python > /dev/null) then (exit 0) else (exit 1) fi
