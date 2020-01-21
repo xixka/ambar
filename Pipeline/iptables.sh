@@ -5,14 +5,14 @@ iptables -L
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
-#¿ªÆôSSH 22¶Ë¿Ú
-#ÔÊĞíping
+#å¼€å¯SSH 22ç«¯å£
+#å…è®¸ping
 iptables -A INPUT -p icmp -j ACCEPT
 iptables -A OUTPUT -p icmp -j ACCEPT
-#¿ªÆô¶ÔÖ¸¶¨ÍøÕ¾µÄ·ÃÎÊ
+#å¼€å¯å¯¹æŒ‡å®šç½‘ç«™çš„è®¿é—®
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 #iptables -A OUTPUT -m state --state NEW,ESTABLISHED,RELATED -p tcp -d 172.17.0.1/24 -j ACCEPT
 iptables -A OUTPUT -m state --state NEW,ESTABLISHED,RELATED -p tcp -d ${LANIP}/24 -j ACCEPT
-#ÔÊĞí»·»Ø
+#å…è®¸ç¯å›
 iptables -A INPUT -i lo -p all -j ACCEPT
 iptables -A OUTPUT -o lo -p all -j ACCEPT

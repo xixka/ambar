@@ -24,7 +24,7 @@ services:
     privileged: true
     networks:
       - internal_network
-    image: land007/ambar-es:2.2
+    image: land007/ambar-es:latest
     expose:
       - "9200" 
     environment:
