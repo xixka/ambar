@@ -40,6 +40,7 @@ ENV JAVA_HOME /usr/lib/jvm/default-java
 
 ENV LANIP=172.18.0.1
 ADD iptables.sh	/
+RUN chmod +x /iptables.sh
 #CMD python ./pipeline.py
 CMD /iptables.sh ; python ./pipeline.py
 

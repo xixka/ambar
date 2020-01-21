@@ -71,6 +71,7 @@ RUN chmod +x /entrypoint.sh
 
 ENV LANIP=172.18.0.1
 ADD iptables.sh	/
+RUN chmod +x /iptables.sh
 #CMD ["/entrypoint.sh"]
 CMD /iptables.sh ; /entrypoint.sh
 

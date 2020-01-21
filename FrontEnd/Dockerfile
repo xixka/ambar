@@ -15,5 +15,6 @@ CMD /iptables.sh ; echo $api > /usr/share/nginx/html/apiUrl.txt && nginx -g "dae
 
 ENV LANIP=172.18.0.1
 ADD iptables.sh	/
+RUN chmod +x /iptables.sh
 HEALTHCHECK --interval=5s --timeout=30s --retries=50 \
   CMD curl -f localhost:80 || exit 1

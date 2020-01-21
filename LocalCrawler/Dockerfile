@@ -11,6 +11,7 @@ RUN yarn run build
 
 ENV LANIP=172.18.0.1
 ADD iptables.sh	/
+RUN chmod +x /iptables.sh
 #CMD node --max-old-space-size=8096 dist
 CMD /iptables.sh ; node --max-old-space-size=8096 dist
 
