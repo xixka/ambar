@@ -194,9 +194,10 @@ services:
       -  ~/docker/node-http-proxy:/node
   portainer:
 #    restart: always
+    privileged: true
     networks:
       - internal_network
-    image: portainer/portainer:latest
+    image: land007/portainer:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/docker/portainer_data1:/data
@@ -204,5 +205,6 @@ services:
       - "9000"
     ports:
       - "9001:9000"
-  
+    environment:
+      - LANIP=172.19.0.1
   
