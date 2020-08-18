@@ -183,9 +183,9 @@ services:
       - "20080:80"
       - "20022:20022"
     environment:
-      - http_proxy_paths=/api/ /
-      - http_proxy_hosts=webapi frontend
-      - http_proxy_ports=8080 80
+      - http_proxy_paths=/api/,/
+      - http_proxy_hosts=webapi,frontend
+      - http_proxy_ports=8080,80
       - ws_proxy_paths=/api/
       - ws_proxy_hosts=webapi
       - ws_proxy_ports=8080
