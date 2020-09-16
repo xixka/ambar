@@ -106,8 +106,8 @@ services:
     image: land007/ambar-webapi:latest
     expose:
       - "8080"
-#    ports:
-#      - "8080:8080"
+    ports:
+      - "8080:8080"
     environment:            
       - uiLang=cn
       - mongoDbUrl=mongodb://db:27017/ambar_data
@@ -128,12 +128,12 @@ services:
     privileged: true
     networks:
       - internal_network
- #   ports:
- #     - "3000:80"
+    ports:
+      - "3000:80"
     expose:
       - "80"
     environment:
-      - api=
+      - api=http://127.0.0.1:8080  #修改为对外提供服务的api的地址，前端浏览器提供这个地址调用
       - LANIP=172.19.0.1
   pipeline0:
     depends_on: 
@@ -165,33 +165,6 @@ services:
       - LANIP=172.19.0.1
     volumes:
       -  ~/docker/ambar/test:/usr/data
-  node-http-proxy:
-    depends_on: 
-      frontend: 
-        condition: service_healthy 
-      webapi: 
-        condition: service_healthy 
-    image: land007/node-http-proxy:latest
-#    restart: always
-    privileged: true
-    networks:
-      - internal_network
-    expose:
-      - "80"
-      - "20022"
-    ports:
-      - "20080:80"
-      - "20022:20022"
-    environment:
-      - http_proxy_paths=/api/,/
-      - http_proxy_hosts=webapi,frontend
-      - http_proxy_ports=8080,80
-      - ws_proxy_paths=/api/
-      - ws_proxy_hosts=webapi
-      - ws_proxy_ports=8080
-      - LANIP=172.19.0.1
-    volumes:
-      -  ~/docker/node-http-proxy:/node
   portainer:
 #    restart: always
     privileged: true
